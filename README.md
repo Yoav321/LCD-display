@@ -24,21 +24,21 @@ Keep your DHT11 connected from the previous lab.
 
 Connect the LCD using the following pins:
 
-| LCD Pin | Name | Connection | Purpose |
+| LCD Pin | Connection | Name | Purpose |
 |---|---|---|---|
-| 1 | VSS | GND | Ground |
-| 2 | VDD | 5V | Power |
-| 3 | VO | Potentiometer middle pin | Adjusts contrast |
-| 4 | RS | Digital Pin 12 | Selects commands or data |
-| 5 | RW | GND | Sets write mode |
-| 6 | E | Digital Pin 11 | Enables data transfer |
-| 7–10 | D0–D3 | Not connected | Unused data pins |
-| 11 | D4 | Digital Pin 5 | Data bit 4 |
-| 12 | D5 | Digital Pin 4 | Data bit 5 |
-| 13 | D6 | Digital Pin 3 | Data bit 6 |
-| 14 | D7 | Digital Pin 2 | Data bit 7 |
-| 15 | A | 5V | Backlight power |
-| 16 | K | GND | Backlight ground |
+| 1 | GND | VSS | Ground |
+| 2 | 5V | VDD | Power |
+| 3 | Potentiometer middle pin | VO | Adjusts contrast |
+| 4 | Digital Pin 6 | RS | Selects commands or data |
+| 5 | GND | RW | Sets write mode |
+| 6 | Digital Pin 7 | E | Enables data transfer |
+| 7–10 | Not connected | D0–D3 | Unused data pins |
+| 11 | Digital Pin 8 | D4 | Data bit 4 |
+| 12 | Digital Pin 9 | D5 | Data bit 5 |
+| 13 | Digital Pin 10 | D6 | Data bit 6 |
+| 14 | Digital Pin 11 | D7 | Data bit 7 |
+| 15 | 5V | A | Backlight power |
+| 16 | GND | K | Backlight ground |
 
 The LCD uses 4-bit mode, meaning it sends data through four data pins (D4–D7).
 
@@ -124,19 +124,19 @@ Test that the LCD correctly displays measurements from the sensor.
 
 Turn the potentiometer in both directions. Observe how the display changes.
 
-Observations:
+Observations: the screen would stay on but the text would dim
 
 ### Test 2: Temperature
 
 Hold your hand near the DHT11 without touching the electrical connections. Observe the temperature on the LCD.
 
-Observations:
+Observations: 
 
 ### Test 3: Humidity
 
 Gently breathe toward the DHT11 from a short distance. Observe the humidity on the LCD.
 
-Observations:
+Observations: it goes up about 20-30 percent
 
 ### Results
 
@@ -144,9 +144,9 @@ Summarize your measurements in the table below.
 
 | Test | Temperature (°F) | Humidity (%) | Observations |
 |---|---|---|---|
-| Baseline | | | |
-| Temperature | | | |
-| Humidity | | | |
+| Baseline | 73.6 | 22.0% | it is the baseline|
+| Temperature | 74.3| 23.0%| it did not go up in temp that much|
+| Humidity | 75.0| 33.0%| this went up a lot and then started summoning the mother ship|
 
 # 5. Reflection
 
@@ -154,24 +154,24 @@ Answer the following questions.
 
 1. What is the purpose of the `LiquidCrystal` library? Why do we use it?
 
-   > your answer
+   > so we dont have to worry about a thousand lines of code
 
 2. What is the difference between `lcd.print()` and `Serial.print()`?
 
-   > your answer
+   > serial print, prints to the console and lcd.print prints to the screen
 
 3. Explain what the two numbers mean in `lcd.setCursor(0, 1)`.
 
-   > your answer
+   > column then row
 
 4. What does the potentiometer control? What happens when you adjust it?
 
-   > your answer
+   > how much power the text receives
 
 5. Why does the LCD require multiple data pins while the DHT11 uses only one?
 
-   > your answer
+   > because the lcd needs a lot of info to display the text and the temp sensor is only giving out info not receiving and displaying
 
 6. How could you use the LCD to alert a user when a temperature or humidity measurement exceeds a certain value?
 
-   > your answer
+   > print and alert message

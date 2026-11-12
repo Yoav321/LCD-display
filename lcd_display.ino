@@ -1,25 +1,25 @@
 /**
  * This lab repo contains code to display a DHT11 to a 16x2 LCD screen
- * First Last - Month Year
+ * Yoav Bierkatz - November 2026
  */
 
 #include <DHT.h>
 #include <LiquidCrystal.h>
 
 const int dhtPin = 2;
-const int rs = 3;
-const int en = 4;
-const int d4 = 5;
-const int d5 = 6;
-const int d6 = 7;
-const int d7 = 8;
+const int rs = 7;
+const int en = 8;
+const int d4 = 9;
+const int d5 = 10;
+const int d6 = 11;
+const int d7 = 12;
 
 const int pause = 5000;
 
 // set up objects
 DHT dht(dhtPin, DHT11);
 
-LiquidCrystal lcd(rs ,en, d4, d5, d6, d7);
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 /**
  * @brief Converts a temperature from Celsius to Fahrenheit.
@@ -28,33 +28,39 @@ LiquidCrystal lcd(rs ,en, d4, d5, d6, d7);
  * @return Temperature in Fahrenheit
  */
 float celsiusToFahrenheit(float tempC) {
-  // TODO: Convert Celsius to Fahrenheit
-  return 0.0;
+  
+  return tempC * 1.8 + 32;
 }
 
 void setup() {
   dht.begin();
 
-  // TODO: initialize the 16x2 LCD
-
+  // initialize the 16x2 LCD
+  lcd.begin(16, 2);
   // TODO: Display a short welcome message
-  
+  lcd.print("Hello Apex");
 }
 
 void loop() {
     float tempCelsius = dht.readTemperature();
     float humidity = dht.readHumidity();
 
-    // TODO: Convert the temperature to Fahrenheit
-  
-    // TODO: position cursor at starter of row 1
-
+    // Convert the temperature to Fahrenheit
+  float tempFahrenheit = celsiusToFahrenheit(tempCelsius);
+    // position cursor at start of row 1
+  lcd.setCursor(0, 0);
     // TODO: Display temp in Fahrenheit
     // format - Temp: xx.x F
 
-    // TODO: position cursor at starter of row 2
+    //position cursor at start of row 2
+  lcd.print("Temp: ");
+  lcd.print(tempFahrenheit, 1);
+  lcd.print(" F");
     // format - Humidity: xx.x%
-
-    // TODO: wait 5 seconds before updating
-
+  lcd.setCursor(0, 1);
+  lcd.print("Humidity: ");
+  lcd.print(humidity, 1);
+  lcd.print("%");
+    //wait 5 seconds before updating
+  delay(5000);
 }
